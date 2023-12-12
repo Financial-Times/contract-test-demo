@@ -6,13 +6,13 @@ import { ReactNode } from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Consumer Stock Trade App',
+  title: 'Stock Trade App'
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html className="h-full" lang="en">
-    <body className={`h-full ${inter.className}`}>{children}</body>
+      <body className={`h-full ${inter.className}`}>{children}</body>
     </html>
   );
 }
