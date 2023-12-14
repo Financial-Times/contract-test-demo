@@ -1,5 +1,5 @@
 import { MatchersV3, PactV3 } from '@pact-foundation/pact';
-import axios, { AxiosPromise } from 'axios';
+import axios from 'axios';
 import path from 'node:path';
 
 const provider = new PactV3({
@@ -8,24 +8,10 @@ const provider = new PactV3({
   provider: 'MyProvider'
 });
 
-const stocksExample = { status: 'success' };
-const EXPECTED_BODY = MatchersV3.like(stocksExample);
-
-const buyStock = (url: string): AxiosPromise => {
-  return axios.request({
-    baseURL: url,
-    headers: { Accept: 'application/json' },
-    method: 'POST',
-    url: '/api/trade',
-    data: { action: 'buy' }
-  });
-};
-
 describe('POST /api/trader', () => {
-  it('returns an HTTP 200 and success status', async () => {
+  it('returns an HTTP 200 and success status when a user buys stock', async () => {
     // Arrange: Setup our expected interactions
-    //
-    // We use Pact to mock out the backend API
+    const expectedResponse = { status: 'success' };
     provider
       .given('I want to buy a stock')
       .uponReceiving('a request to buy a stock')
@@ -38,15 +24,21 @@ describe('POST /api/trader', () => {
       .willRespondWith({
         status: 200,
         headers: { 'Content-Type': 'application/json' },
-        body: EXPECTED_BODY
+        body: MatchersV3.like(expectedResponse)
       });
 
     return provider.executeTest(async (mockserver) => {
       // Act: test our API client behaves correctly
-      const { data } = await buyStock(mockserver.url);
+      const { data } = await axios({
+        baseURL: mockserver.url,
+        headers: { Accept: 'application/json' },
+        method: 'POST',
+        url: '/api/trade',
+        data: { action: 'buy' }
+      });
 
       // Assert: check the result
-      expect(data).toEqual(stocksExample);
+      expect(data).toEqual(expectedResponse);
     });
   });
 });
