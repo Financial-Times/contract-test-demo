@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "rimraf pacts && jest --testPathIgnorePatterns provider",
-    "test:contract:provider": "PACT_DO_NOT_TRACK=true start-server-and-test dev http://localhost:3000 'jest provider --passWithNoTests'"
+    "test:contract:provider": "PACT_DO_NOT_TRACK=true rimraf .next && start-server-and-test dev http://localhost:3000 'jest provider'"
   },
   "dependencies": {
     "@faker-js/faker": "^8.3.1",
