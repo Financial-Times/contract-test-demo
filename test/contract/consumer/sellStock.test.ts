@@ -28,7 +28,7 @@ describe('POST /api/trader', () => {
     // We use Pact to mock out the backend API
     provider
       .given('I want to sell some stock')
-      .uponReceiving('a request to buy a stock')
+      .uponReceiving('a request to sell some stock')
       .withRequest({
         method: 'POST',
         path: '/api/trade',
