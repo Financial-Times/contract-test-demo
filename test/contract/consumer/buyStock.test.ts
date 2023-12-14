@@ -5,7 +5,8 @@ import path from 'node:path';
 const provider = new PactV3({
   dir: path.resolve(process.cwd(), 'pacts'),
   consumer: 'MyConsumer',
-  provider: 'MyProvider'
+  provider: 'MyProvider',
+  logLevel: 'warn'
 });
 
 describe('POST /api/trader', () => {
