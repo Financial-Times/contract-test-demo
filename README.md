@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Contract Test Demo
+
+## Overview
+
+This application, built with Next.js and TypeScript, showcases contract testing in software development. It simulates a stock trading platform, featuring a user-friendly UI for displaying share prices and executing trade actions.
+
+## What is Contract Testing?
+
+Contract testing is a vital practice in software development, ensuring two systems (like a service and its consumer) communicate correctly. Think of it as establishing a 'contract' that defines the structure and format of their interactions.
+
+### Why is Contract Testing Important?
+
+- **Reliable Integration**: Guarantees that different systems can work together seamlessly.
+- **Early Issue Detection**: Identifies problems early in the development cycle.
+- **Time and Cost Efficiency**: Automates interaction validation, saving resources.
+- **Independent Development**: Allows teams to work on services independently without integration concerns.
+
+## Resources for Further Research
+
+1. **Martin Fowler on Consumer-Driven Contracts**: Explore the concept of consumer-driven contracts in this insightful article by Martin Fowler.  
+   [Read More](https://martinfowler.com/articles/consumerDrivenContracts.html)
+2. **Introduction to Contract Testing with Pactflow**: This YouTube playlist provides a comprehensive guide to contract testing using Pactflow.  
+   [Watch the Series](https://www.youtube.com/playlist?list=PLwy9Bnco-IpfZ72VQ7hce8GicVZs7nm0i)
+3. **Pact Documentation**: Discover everything about Pact, a leading tool for contract testing.  
+   [Explore Pact Docs](https://docs.pact.io/)
+4. **Advanced Contract Testing Practices**: Gain deeper insights into best practices for writing consumer tests in contract testing, as discussed in this informative video.  
+   [Watch the Video](https://www.youtube.com/watch?v=oPuHb9Rl8Zo)
+
+
+## Project Structure
+
+- **Frontend**: Interactive UI built with Next.js for stock trading simulations.
+- **APIs**:
+    - `GET /api/stocks`: Retrieves a list of stocks.
+    - `POST /api/trade`: Handles buying and selling of stocks.
+- **Testing**:
+    - **Consumer Tests**: Validate frontend interactions with APIs.
+    - **Provider Tests**: Ensure API integrity and response accuracy.
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the Repository**: `git clone https://github.com/Financial-Times/contract-test-demo`
+2. **Install Dependencies**: Run `npm install` in the project directory.
+3. **Launch the App**: Execute `npm run dev` to start the Next.js server.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Running the Tests
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Consumer Tests**: Execute `npm test` for consumer contract testing.
+- **Provider Tests**: Run `npm run test:contract:provider` for provider contract testing.
